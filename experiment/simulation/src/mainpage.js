@@ -24,7 +24,7 @@ var htm ='<div class="row">'
 	   +'</div>'
 	   
 	   +'<div class="col-sm-3">'
-	   +'<select  class="form-control selectConf marginBottom" id="concreteGrade" " style="height:auto; " disabled>'
+	   +'<select  class="form-control selectConf marginBottom" id="concreteGrade" " style="height:auto; " >'
 	   +'<option value="0">--- Select grade of concrete --- </option>'
 	   +'<option value="10" >M10  </option>'
 	   +'<option value="15" >M15  </option>'
@@ -45,7 +45,7 @@ var htm ='<div class="row">'
 	   +'</div>'
 	   
 	   
-	   +'<div class="col-sm-3" id="concreteLabel" hidden>'
+	   +'<div class="col-sm-3" id="concreteLabel" style="margin-top:-10px;" hidden>'
        +'<label class="labelstyle spanMsg " >&nbsp;f<sub>ck</sub> : <label id = "relTemp" class="labelstyle spanMsg ">'+conVal+'</label>   </label>'
 //	   +'<span id = "relTemp1" class="labelstyle spanMsg">'+steelVal+' </span>'
 	   +'</div>'
@@ -56,7 +56,7 @@ var htm ='<div class="row">'
 	   +'<label class="labelstyle marginBottom">Grade of Steel f<sub>y</sub> (N/mm<sup>2</sup>) : </label>'
 	   +'</div>'	   
 	   +'<div class="col-sm-3">'
-	   +'<select  class="form-control selectConf marginBottom" id="steelGrade" " style="height:auto; " disabled>'
+	   +'<select  class="form-control selectConf marginBottom" id="steelGrade" " style="height:auto; " >'
 	   +'<option value="0">--- Select grade of steel --- </option>'
 	   +'<option value="250" >Fe250  </option>'
 	   +'<option value="415" >Fe415  </option>'
@@ -65,7 +65,7 @@ var htm ='<div class="row">'
 	   +'</div>'
 	   
 	   
-	    +'<div class="col-sm-3" id="steelLabel" hidden>'
+	    +'<div class="col-sm-3" id="steelLabel" style="margin-top:-10px;" hidden>'
        +'<label class="labelstyle spanMsg" >&nbsp;f<sub>y</sub> :<label id = "relTemp1" class="labelstyle spanMsg"> '+steelVal+' </label>   </label>'
 //	   +'<span id = "relTemp1" class="labelstyle spanMsg">'+steelVal+' </span>'
 	   +'</div>'
@@ -76,7 +76,7 @@ var htm ='<div class="row">'
 	   +'<label class="labelstyle marginBottom">Size of column b (mm) : </label>'
 	   +'</div>'	    
 	   +'<div class="col-sm-6">'
-	   +'<input type="number" id="columnSize" style= 10px;width:100%;" placeholder="Enter Value" class=" form-control marginBottom" disabled>'
+	   +'<input type="number" id="columnSize" style= 10px;width:100%;" placeholder="" class=" form-control marginBottom" >'
 	   +'</div>'	     
 	   +'</div>'
 	     
@@ -85,7 +85,7 @@ var htm ='<div class="row">'
 	   +'<label class="labelstyle marginBottom"> h (mm) : </label>'
 	   +'</div>'
 	   +'<div class="col-sm-6">'
-	   +'<input type="number" id="d" style= 10px;width:100%;" placeholder="Enter Value" class=" form-control marginBottom" disabled>'
+	   +'<input type="number" id="d" style= 10px;width:100%;" placeholder="" class=" form-control marginBottom" >'
 	   +'</div>'	     
 	   +'</div>'	
 	   
@@ -94,7 +94,7 @@ var htm ='<div class="row">'
 	   +'<label class="labelstyle marginBottom">SBC of Soil (kN/m<sup>2</sup>) : </label>'
 	   +'</div>'
 	   +'<div class="col-sm-6">'
-	   +'<input type="number" id="sbc" style= 10px;width:100%;" placeholder="Enter Value" class=" form-control marginBottom" disabled>'
+	   +'<input type="number" id="sbc" style= 10px;width:100%;" placeholder="" class=" form-control marginBottom" >'
 	   +'</div>'	     
 	   +'</div>'
 	   
@@ -103,51 +103,33 @@ var htm ='<div class="row">'
 	   +"<label class='labelstyle marginBottom'>Effective Cover d'(mm) : </label>"
 	   +'</div>'
 	   +'<div class="col-sm-6">'
-	   +'<input type="number" id="effectiveCover" style= 10px;width:100%;" placeholder="Enter Value" class=" form-control marginBottom" disabled>'
+	   +'<input type="number" id="effectiveCover" style= 10px;width:100%;" placeholder="" class=" form-control marginBottom" >'
 	   +'</div>'	     
 	   +'</div>'
 
-//	   +'<div class="row">'
-//	   +'<div class="col-sm-12">'
-//	   +'<button type="button" style="padding: 10px; "  class="btn btn-danger btnStyle" id="checkConfg"  data-toggle="modal" data-target="#myModal"  disabled><b>NEXT LEVEL </b></button>'
-//	   +'</div>'
-//	   +'</div>'	   
-//	   + modelHtm;	   
+	   +'<div class="row">'
+	   +'<div class="col-sm-2">'
+	   +'</div>'
+	   +'<div class="col-sm-8">'
+	   +'<button type="button" style="padding: 10px;width:100%;margin-top: 10px;"  class="btn btn-danger btnStyle" id="checkConfg"  data-toggle="modal" data-target="#myModal"  ><b>CONFIGURE </b></button>'
+	   +'</div>'
+	   +'<div class="col-sm-2">'
+	   +'</div>'
+	   +'</div>'	   
+   
     $("#page1Div2").html(htm);
 
-$("#presText").change(function(){		
-		$("body").css("padding","0px 0px 0px 0px");	
-		pre = $("#presText").val();
-		console.log("p vale"+pre);
-		if(pre == ""){			
-			alert("Please Enter Value ");
-			//$("#modelMsg").html("<b class='boldTextRed'>Please Enter Value</b>");
-		}else {
-			pre = parseFloat($("#presText").val());
-				if(pre <= 0){			
-				alert("Enter Appropraite Value");					
-				}else{
-				$("#concreteGrade").prop("disabled",false);
-				$("#AnswerVal").text(pre);
-				//alert("Correct Value");
-				
-				}
-		}
-	});
-	 
 	$("#concreteGrade").change(function(){
-		$("body").css("padding","0px 0px 0px 0px");	
-		conVal = $("#concreteGrade").val();
+		
+		conVal = parseInt($("#concreteGrade").val());
+		
           if(conVal<=0){
-			$("#modelMsg").html("<b class='boldTextRed'>Select Appropraite Value</b>");
-			//alert("Select Appropraite Values");
+			$(".modal-header").html("Error Message");
+			$(".modal-header").css("background","#9c1203b0");
+			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
+			$("#MsgModal").html("Select appropriate values");
     	  }else{
-			$("#presText").prop("disabled",true);
-			//$('#subPre').prop("disabled",true);	
-			$("#concreteGrade").prop("disabled",true);
-			$("#steelGrade").prop("disabled",false);	
-			$("#concreteLabel").prop("hidden",false);	
-			
+			$("#concreteLabel").prop("hidden",false);				
 			$("#relTemp").text(conVal+" Mpa");
 			$("#FootingA").text(conVal+" Mpa");
 		  }        
@@ -155,145 +137,78 @@ $("#presText").change(function(){
 	
 	$("#steelGrade").change(function(){
 		$("body").css("padding","0px 0px 0px 0px");	
-		steelVal = $("#steelGrade").val();
+		steelVal = parseInt($("#steelGrade").val());
 		if(steelVal<=0){
-			$("#modelMsg").html("<b class='boldTextRed'>Select Appropraite Value</b>");
-			//alert("Select Appropraite Values");
+			$(".modal-header").html("Error Message");
+			$(".modal-header").css("background","#9c1203b0");
+			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
+			$("#MsgModal").html("Select appropriate values");
 		}else{
-		  //$("#steelGrade").prop("disabled",true);
+		 
 		  $("#steelLabel").prop("hidden",false);	
 		  $("#relTemp1").text(steelVal+"Mpa");
- 		  $("#steelGrade").prop("disabled",true);
-		  $("#columnSize").prop("disabled",false);
+ 		 
 		 
 		}
 		
 		
 	});
 	
+  
+  $("#checkConfg").click(function(){
 	
-	$("#columnSize").change(function(){
-			$("body").css("padding","0px 0px 0px 0px");	
-		 colSize = $("#columnSize").val();
-		if(colSize <= 0){
-//			$("#modelMsg").html("<b class='boldTextRed'>Select Appropraite Value</b>");
-			alert("Enter Appropraite Value");
-		}else{
-		  $("#columnSize").prop("disabled",true);
-		   $("#d").prop("disabled",false);
-		 
-		}
-	});
+	pre = $("#presText").val();
+	conVal = $("#concreteGrade").val();
+	steelVal =$("#steelGrade").val();
+	colSize = $("#columnSize").val();
+	d_val = $("#d").val();
+	sbc_val = $("#sbc").val();
+	eCover_val = $("#effectiveCover").val();
 	
-	
-	
-	$("#d").change(function(){
-			$("body").css("padding","0px 0px 0px 0px");	
-		d_val = $("#d").val();
-		if(d_val <= 0){
-//			$("#modelMsg").html("<b class='boldTextRed'>Select Appropraite Value</b>");
-			alert("Enter Appropraite Value");
-		}else{		  
-		  $("#d").prop("disabled",true);
-		  $("#sbc").prop("disabled",false);		 
-		  
-		}
-	});
-	 
-	
-	
-	$("#sbc").change(function(){
-			$("body").css("padding","0px 0px 0px 0px");	
-		sbc_val = $("#sbc").val();
-		if(sbc_val <= 0){
-//			$("#modelMsg").html("<b class='boldTextRed'>Select Appropraite Value</b>");
-			alert("Enter Appropraite Value");
-		}else{
-			$("#sbc").prop("disabled",true);
-		  	$("#effectiveCover").prop("disabled",false);		 
-		  	
-		}
-	});
-   
-   
-   $("#effectiveCover").change(function(){
-		$("body").css("padding","0px 0px 0px 0px");	
-		eCover_val = $("#effectiveCover").val();
-		console.log("effectiveCover="+effectiveCover);
-		if(eCover_val >= 50){
+	if(pre==""||conVal==0||steelVal==0||colSize==""||d_val==""||sbc_val==""||eCover_val==""){
+		
+		    $(".modal-header").html("Error Message");
+			$(".modal-header").css("background","#9c1203b0");
+			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
+			$("#MsgModal").html("Values not found");
 			
-		  $("#effectiveCover").prop("disabled",true);	
-		   alert("Go To Next Page");	 
-//		  FootingAnim(pre,conVal,steelVal,colSize,d_val,sbc_val,eCover_val);
-//		  Page1(pre,conVal,steelVal,colSize,d_val,sbc_val,eCover_val);
-		 
-		}else{
-		  //			$("#modelMsg").html("<b class='boldTextRed'>Select Appropraite Value</b>");
-			alert("Enter Appropraite Value Which is Greaterthan 50");
-		}
-	});
+	}else{
+	
+	pre = parseFloat($("#presText").val());
+	conVal = parseInt($("#concreteGrade").val());
+	steelVal = parseInt($("#steelGrade").val());
+	colSize = parseFloat($("#columnSize").val());
+	d_val = parseFloat($("#d").val());
+	sbc_val = parseFloat($("#sbc").val());
+	eCover_val = parseFloat($("#effectiveCover").val());
+	
+	if(pre<=0||conVal==0||steelVal==0||colSize<=0||d_val<=0||sbc_val<=0||eCover_val<=0)
+	  {
+		    $(".modal-header").html("Error Message");
+			$(".modal-header").css("background","#9c1203b0");
+			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
+			$("#MsgModal").html("Provide the necessary values.");
+	}else
+	  if(sbc_val<150 || sbc_val>3300){
+	        $(".modal-header").html("Error Message");
+			$(".modal-header").css("background","#9c1203b0");
+			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
+			$("#MsgModal").html("Enter value of SBC between 150 to 3300 ");
+	}else if(eCover_val<50 || eCover_val>75){
+		 $(".modal-header").html("Error Message");
+			$(".modal-header").css("background","#9c1203b0");
+			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
+			$("#MsgModal").html("Enter values of effective cover d"+"'"+" between 50 mm to 75 mm");
+	}else{
+		Page1();
+		$("#btnModal").removeClass("btn-danger").addClass("btn-success");
+	        $(".modal-header").html("Success Message");
+            $(".modal-header").css("background","#5cb85c");
+			$("#MsgModal").html("Configured successfully!");
+			
+//		$("#checkConfg").prop("disabled",true);
+	}
+  }	
+});
 
-
-//   $("#checkConfg").click(function(){
-////	
-////	$("#canvas-div").html('');
-////	$("#main-div-conf").html('');
-//	$("#centerText1").html('');
-//	$("#centerText2").html('');
-//		$("body").css("padding","0px 0px 0px 0px");	
-//	FootingAnim(pre,conVal,steelVal,colSize,d_val,sbc_val,eCover_val);
-////	Page2Configurations(pre,conVal,steelVal,colSize,d_val,sbc_val,eCover_val);	
-//	 //	$("#nextLevelForConfig").prop("disabled",false);
-//   		$("#modelMsg").html("<b class='boldTextGreen'>Configured Successfully</b>");
-//  
-//});
-
-
-
-//$("#lx").change(function(){
-//	console.log("gfghg");
-//	MasterJsonSet();
-//	MasterJsonGet();
-//
-//	});
-//
-//$("#edit").click(function(){
-//	console.log("edit");
-//	MasterJsonUpdate();
-//
-//	});
-//$("#update").click(function(){
-//	console.log("update");
-//	MasterJsonSet();
-//
-//	});
-//
-//function MasterJsonSet(){
-//	var tempJson = {};
-//	a=parseInt($("#ly").val());
-//	b= parseInt($("#lx").val());
-//	ans=a+b;
-//    tempJson.ly =a;
-//    tempJson.lx = b;
-//    tempJson.ans=ans;
-//    
-//    $("#label12").prop("hidden",false);
-//    $("#anslabel").html("Addition of "+ans);
-//    
-//	MasterJson.page1 = tempJson;
-//	console.log(MasterJson);
-//	 $("#lx,#ly,#lxans").prop("disabled",true);	
-//	
-//}
-//function MasterJsonGet(){
-//   
-//    $("#ly").val(MasterJson.page1.ly);
-//    $("#lx").val(MasterJson.page1.lx);
-//	$("#lxans").val(MasterJson.page1.ans);
-//	
-//}
-//function MasterJsonUpdate(){
-//	 $("#lx,#ly,#lxans").prop("disabled",false);
-////	 MasterJsonSet();
-//}
    
