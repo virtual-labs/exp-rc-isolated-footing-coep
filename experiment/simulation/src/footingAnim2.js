@@ -3,21 +3,21 @@
    var y=100;
 
 
-function footingAnim2(pre,conVal,steelVal,colSize,d_val,sbc_val,eCover_val,totalDepthvalue){
+function footingAnim2(){
 	$('#page1Div1').html("");
 	$('#page1Div1').removeAttr('width');
 	$('#page1Div1').removeAttr('height');
-	$('#page2Div1').html("");
-	$('#page2Div1').removeAttr('width');
-	$('#page2Div1').removeAttr('height');
+//	$('#page2Div1').html("");
+//	$('#page2Div1').removeAttr('width');
+//	$('#page2Div1').removeAttr('height');
 	var w =670;
 	var h = 620;
 
 	if ($(window).width() < 500) {
-		paper = new Raphael(document.getElementById('page3Div1'), '100%', '100%');
+		paper = new Raphael(document.getElementById('page1Div1'), '100%', '100%');
 		paper.setSize('100%', '100%');
 	} else {
-		paper = new Raphael(document.getElementById('page3Div1'), '100%', '100%');
+		paper = new Raphael(document.getElementById('page1Div1'), '100%', '100%');
 		paper.setViewBox(0, 0, w, h, true);
 		paper.setSize('100%', '100%');
 	}
