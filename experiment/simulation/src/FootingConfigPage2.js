@@ -18,9 +18,11 @@ var dxCorr;
 var dyCorr;
 var totalDepthvalue;
 var EffectiveDepth;
+var effVal;
+var effValRound;
+var totDepth; 
 
-
-	function Page2(pre,conVal,steelVal,colSize,d_val,sbc_val,eCover_value2,LfValue,BfValue,wuCorr){
+	function Page2(){
 		$("#centerText1").html('DEPTH OF FOOTING FROM BENDING MOMENT CONSIDERATION');
 	    $("#centerText2").html('FOOTING TOP VIEW'); 
 	    
@@ -79,12 +81,12 @@ var EffectiveDepth;
 	    
 	    var selection3 = '<div class="row">'
 	   +'<div class="col-sm-6">'
-	   +' <div class="alert alert-info">'
+	   +' <div class="spanMsg">'
    	   +' <strong class="labelstyleInfo "><center>f<sub>ck</sub>= '+fck+' N/mm<sup>2</sup> &nbsp; &nbsp; f<sub>y</sub>= '+fy+' N/mm<sup>2</sup> </center></strong> '
   	   +' </div>'
   	   +'</div>'
 	   +'<div class="col-sm-6">'
-	   +' <div class="alert alert-info">'
+	   +' <div class="spanMsg">'
    	   +' <strong class="labelstyleInfo "><center>b= '+bValpg3+' mm &nbsp; &nbsp; D= '+dValuepg3+' mm </center></strong> '
   	   +' </div>'
   	   +'</div>'
@@ -93,12 +95,12 @@ var EffectiveDepth;
 	   
 	   +'<div class="row">'
 	   +'<div class="col-sm-6">'
-	   +' <div class="alert alert-info">'
+	   +' <div class="spanMsg">'
    	   +' <strong class="labelstyleInfo "><center>W<sub>u</sub>= '+wuVal2+' kN/m<sup>2</sup> &nbsp; &nbsp; P='+PVal+' kN </center></strong> '
   	   +' </div>'
   	   +'</div>'
 	   +'<div class="col-sm-6">'
-	   +' <div class="alert alert-info">'
+	   +' <div class="spanMsg">'
    	   +' <strong class="labelstyleInfo "><center>L<sub>f</sub>= '+LfANSS+' m &nbsp; &nbsp; B<sub>f</sub>= '+BfANSS+' m</center></strong> '
   	   +' </div>'
   	   +'</div>'
@@ -107,21 +109,21 @@ var EffectiveDepth;
 	  
 	  +'<div class="row">'
 	   +' <div class="col-sm-12">'
-	   +'  <div class="alert alert-info">'
+	   +'  <div class="spanMsg">'
    	   +"  <strong class='labelstyleInfo '><center>Effective Cover d'= "+effectiveCover+" mm</center></strong>"
   	   +'  </div>'
   	   +' </div>'
 	   +'</div>'
 	    
-	   +'<div class="row calRowBorder" id="rw1">'
+	   +'<div class="row calRowBorder" style="margin-top:3px;" id="rw1">'
 	   +'<div class="col-sm-5">'
-	   +'<label class="labelstyle ">Calculate M<sub>ux</sub> (kN/m) : </label>'
+	   +'<label class="labelstyle ">Calculate M<sub>ux</sub> (kNm) : </label>'
 	   +'</div>'
 	   +'<div class="col-sm-4">'
 	   +'<input type="number" id="muxValue"   class=" form-control "  >'
 	   +'</div>'	    
 	   +'<div class="col-sm-3" id="buttonDiv">'
-	   +'<button type="button"   class="btn btn-danger btnDesign" style = "width:100%;" id="subMux" data-toggle="modal" data-target="#myModal" ><b>CHECK ANSWER</b></button>'
+	   +'<button type="button"   class="btn btn-danger btnDesign" style = "width:100%;" id="subMux" data-toggle="modal" data-target="#myModal" ><b>Submit</b></button>'
 	   +'</div>'
 	   +'</div>'
 	   
@@ -145,7 +147,7 @@ var EffectiveDepth;
 	   +'<input type="number" id="muyValue"   class=" form-control "  >'
 	   +'</div>'	    
 	   +'<div class="col-sm-3" id="buttonDiv">'
-	   +'<button type="button"   class="btn btn-danger btnDesign" style = "width:100%;" id="subMuy" data-toggle="modal" data-target="#myModal" ><b>CHECK ANSWER</b></button>'
+	   +'<button type="button"   class="btn btn-danger btnDesign" style = "width:100%;" id="subMuy" data-toggle="modal" data-target="#myModal" ><b>Submit</b></button>'
 	   +'</div>'
 	   +'</div>'
 	  
@@ -170,7 +172,7 @@ var EffectiveDepth;
 	   +'<input type="number" id="dxValue"  class=" form-control "  >'
 	   +'</div>'	    
 	   +'<div class="col-sm-3" id="buttonDiv">'
-	   +'<button type="button"   class="btn btn-danger btnDesign" style = "width:100%;" id="dxValueSub" data-toggle="modal" data-target="#myModal" ><b>CHECK ANSWER</b></button>'
+	   +'<button type="button"   class="btn btn-danger btnDesign" style = "width:100%;" id="dxValueSub" data-toggle="modal" data-target="#myModal" ><b>Submit</b></button>'
 	   +'</div>'
 	   +'</div>'
 	   
@@ -182,26 +184,36 @@ var EffectiveDepth;
 	   +'<input type="number" id="dyValue"  class=" form-control "  >'
 	   +'</div>'	    
 	   +'<div class="col-sm-3" id="buttonDiv">'
-	   +'<button type="button"   class="btn btn-danger btnDesign" style = "width:100%;" id="dyValueSub" data-toggle="modal" data-target="#myModal" ><b>CHECK ANSWER</b></button>'
+	   +'<button type="button"   class="btn btn-danger btnDesign" style = "width:100%;" id="dyValueSub" data-toggle="modal" data-target="#myModal" ><b>Submit</b></button>'
 	   +'</div>'
 	   +'</div>'
 	   
 	   
 	   
-	   +'<div class="row calRowBorder" id="rw5" hidden>'
-	   +'<div class="col-sm-5">'
-	   +'<label class="labelstyle ">Effective Depth d (mm)  : </label>'
+//	   +'<div class="row calRowBorder" id="rw5" hidden>'
+//	   +'<div class="col-sm-5">'
+//	   +'<label class="labelstyle ">Effective Depth d (mm)  : </label>'
+//	   +'</div>'
+//	   +'<div class="col-sm-4">'
+//	   +'<input type="number" id="effectiveD"  class=" form-control "  >'
+//	   +'</div>'	    
+//	   +'<div class="col-sm-3" id="buttonDiv">'
+//	   +'<button type="button"   class="btn btn-danger btnDesign" style = "width:100%;" id="SubeffectiveD" data-toggle="modal" data-target="#myModal" ><b>Submit</b></button>'
+//	   +'</div>'
+//	   +'</div>'
+	   
+	   
+	     +'<div class="row " id="rw7" hidden>'
+	   +'<div class="col-sm-2">'	 
 	   +'</div>'
-	   +'<div class="col-sm-4">'
-	   +'<input type="number" id="effectiveD"  class=" form-control "  >'
+	   +'<div class="col-sm-8">'
+	   +'<center><label class="labelstyle spanMsg " >  <label id = "effLabel" class="labelstyle spanMsg "> '+effValRound+'</label>   </label></center>'
 	   +'</div>'	    
-	   +'<div class="col-sm-3" id="buttonDiv">'
-	   +'<button type="button"   class="btn btn-danger btnDesign" style = "width:100%;" id="SubeffectiveD" data-toggle="modal" data-target="#myModal" ><b>CHECK ANSWER</b></button>'
+	   +'<div class="col-sm-2" >'
 	   +'</div>'
 	   +'</div>'
 	   
-	   
-	   +'<div class="row calRowBorder" id="rw6" hidden>'
+	   +'<div class="row calRowBorder" id="rw6" style="margin-top:10px;" hidden>'
 	   +'<div class="col-sm-5">'
 	   +'<label class="labelstyle ">Total Depth (mm) : </label>'
 	   +'</div>'
@@ -209,18 +221,23 @@ var EffectiveDepth;
 	   +'<input type="number" id="totalDepth"  class=" form-control "  >'
 	   +'</div>'	    
 	   +'<div class="col-sm-3" id="buttonDiv">'
-	   +'<button type="button"   class="btn btn-danger btnDesign" style = "width:100%;" id="totalDepthSub" data-toggle="modal" data-target="#myModal" ><b>CHECK ANSWER</b></button>'
+	   +'<button type="button"   class="btn btn-danger btnDesign" style = "width:100%;" id="totalDepthSub" data-toggle="modal" data-target="#myModal" ><b>Submit</b></button>'
 	   +'</div>'
 	   +'</div>'
-	   
 	  
-	   +'<div class="row" id="rw7" hidden>'
-	   +'<div class="col-sm-12">'
-	   +'<button type="button" style="padding: 10px;"  class="btn btn-danger btnStyle" id="nextLevelPg3"  data-toggle="modal" data-target="#myModal"  disabled ><b>NEXT LEVEL</b></button>'
+	  
+	   +'<div class="row" id="rw8" hidden>'
+	   +'<div class="col-sm-2">'
 	   +'</div>'
+	   +'<div class="col-sm-8">'
+	   
+	   +'<button type="button" style="padding: 10px;width:100%;margin-top: 10px;"  class="btn btn-danger btnStyle" id="nextLevelPg3"     ><b>NEXT LEVEL</b></button>'
+	   +'</div>'	   
+	   +'<div class="col-sm-2">'
+	   +'</div>'	   
 	   +'</div>'
 	 
-	   $("#page3Div2").html(selection3); 
+	   $("#page1Div2").html(selection3); 
 	    
 	    
 	    //calculate mux and convert it 
@@ -248,20 +265,25 @@ var EffectiveDepth;
 //	    convertMux_corr=parseFloat(convertMux_corr111);
 	     console.log("convertMux_corr final  = "+convertMux_corr+" N mm");
 	     
-	    var id=0;
-	   	
-	   	
-	  footingAnim2(pre,conVal,steelVal,colSize,d_val,sbc_val,eCover_val,totalDepthvalue);
+//	     id=1;
+   	
+	  footingAnim2();
 	   
 	   
 	   var Mux_IO;
+	   var id7 = 1;
+	   
 	 	$("#subMux").click(function(){	
 	 	$("body").css("padding","0px 0px 0px 0px");
 		Mux_IO =$("#muxValue").val();	
 		if(Mux_IO==""){
-			$("#modelMsg").html("<b class='boldTextRed'>Enter numeric value ");
+			$(".modal-header").html("Error Message");
+			$(".modal-header").css("background","#9c1203b0");
+			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
+			$("#MsgModal").html("Provide the necessary values");
 		}else{
-			if (id <= 2) {
+			Mux_IO =parseFloat($("#muxValue").val());
+			if (id7 <= 3) {
 				if (Mux_IO == MuxVal) {
 					//addToMasterJSON();
 					$("#rw2").prop("hidden",false);
@@ -271,20 +293,31 @@ var EffectiveDepth;
 					$("#subMuy").prop("disabled",false);		
 					$("#muxValue").prop("disabled",true);
 					$("#subMux").prop("disabled",true);
-					id=0;
+					
 					toastr.success("Correct Answer");
 				} else if (Mux_IO != MuxVal) {
-					$("#modelMsg").html("<b class='boldTextRed'>Entered value is incorrect.Try again.</b> ");
-					
+                     
+                     $(".modal-header").html("Error Message");
+			$(".modal-header").css("background","#9c1203b0");
+			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
+			$("#MsgModal").html("Entered value is incorrect.Try again.");
+                     					
 				}
-			} else if (id == 3){
-				$("#ModelTitle1").html("Formula");
-				MuxFormulaImg= '<img src="images/MuxFormula.png"   class="img-responsive" alt="Cinque Terre" width="50%" height="40%" >'
-				//modelImg = '<img src="images/typesOfSupports.png" class="img-responsive" alt="Cinque Terre"  alt=" " width="150" height="50">'
-				$("#modelMsg").html(MuxFormulaImg);
+			} else if (id7 == 4){
+//				$("#ModelTitle1").html("Formula");
+//				MuxFormulaImg= '<img src="images/MuxFormula.png"   class="img-responsive" alt="Cinque Terre" width="50%" height="40%" >'
+				modelImg = '<img src="images/MuxFormula.png" class="img-responsive" alt="Cinque Terre"  alt=" " >'
+//				$("#modelMsg").html(MuxFormulaImg);
+               
+               $(".modal-header").html("Formula");
+			$(".modal-header").css("background","#23435c");
+			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
+		    $("#MsgModal").html(modelImg);
+                
+
 			} else {
 				$("#ModelTitle1").html("Message box");	
-				Mux_IO =parseFloat($("#muxValue").val());
+				
 //				flow = flowAns.toFixed(2);
 				if (Mux_IO == MuxVal) {	
 						
@@ -296,14 +329,19 @@ var EffectiveDepth;
 					$("#subMuy").prop("disabled",false);		
 					$("#muxValue").prop("disabled",true);
 					$("#subMux").prop("disabled",true);
-					id=0;
+					
 					toastr.success("Correct Answer");
 				} else {
 						
-					$("#modelMsg").html("<b class='boldTextBlue'>Correct Answer is  " +MuxVal+'</b>');
+				    $("#btnModal").removeClass("btn-danger").addClass("btn-success");
+	        $(".modal-header").html("Success Message");
+            $(".modal-header").css("background","#5cb85c");
+			$("#MsgModal").html("Correct Answer is " + MuxVal);		
+						
+//					$("#modelMsg").html("<b class='boldTextBlue'>Correct Answer is  " +MuxVal+'</b>');
 				}
 			}
-			id++;
+			id7++;
 		}
 
 	 
@@ -378,13 +416,19 @@ var EffectiveDepth;
 	     console.log("convertMuy_corr = "+convertMuy_corr+" N mm");
 	     
 		var MuyIO;
+		var id8=1;
+		
 		$("#subMuy").click(function(){	
 		 	$("body").css("padding","0px 0px 0px 0px");
 			MuyIO =$("#muyValue").val();	
 			if(MuyIO==""){
-				$("#modelMsg").html("<b class='boldTextRed'>Enter numeric value ");
+				 $(".modal-header").html("Error Message");
+			$(".modal-header").css("background","#9c1203b0");
+			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
+			$("#MsgModal").html("Provide the necessary values");
 			}else{
-				if (id <= 2) {
+				MuyIO =parseFloat($("#muyValue").val());
+				if (id8 <= 3) {
 					if (MuyIO == MuyVal) {
 						//addToMasterJSON();
 						$("#rw3").prop("hidden",false);
@@ -394,19 +438,29 @@ var EffectiveDepth;
 						$("#dxValueSub").prop("disabled",false);
 						$("#muyValue").prop("disabled",true);
 						$("#subMuy").prop("disabled",true);			
-						id=0;
+						
 						toastr.success("Correct Answer");
 					} else if (MuyIO != MuyVal) {
-						$("#modelMsg").html("<b class='boldTextRed'>Entered value is incorrect.Try again.</b> ");					
-					}
-				} else if (id == 3){
-					$("#ModelTitle1").html("Formula");
-					var  MuyFormulaImg= '<img src="images/MuyFormula.png"class="img-responsive" alt="Cinque Terre" width="50%" height="40%" >'
-					//modelImg = '<img src="images/typesOfSupports.png" class="img-responsive" alt="Cinque Terre"  alt=" " width="150" height="50">'
-					$("#modelMsg").html(MuyFormulaImg);
+						$(".modal-header").html("Error Message");
+			$(".modal-header").css("background","#9c1203b0");
+			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
+			$("#MsgModal").html("Entered value is incorrect.Try again.");
+      					}
+				} else if (id8 == 4){
+//					$("#ModelTitle1").html("Formula");
+//					var  MuyFormulaImg= '<img src="images/MuyFormula.png"class="img-responsive" alt="Cinque Terre" width="50%" height="40%" >'
+					modelImg = '<img src="images/MuyFormula.png" class="img-responsive" alt="Cinque Terre"  alt=" " >'
+//					$("#modelMsg").html(MuyFormulaImg);
+
+             $(".modal-header").html("Formula");
+			$(".modal-header").css("background","#23435c");
+			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
+		    $("#MsgModal").html(modelImg);
+			
+
 				} else {
 					$("#ModelTitle1").html("Message box");	
-					MuyIO =parseFloat($("#muyValue").val());
+					
 	//				flow = flowAns.toFixed(2);
 					if (MuyIO == MuyVal) {			
 						//addToMasterJSON();		
@@ -417,13 +471,17 @@ var EffectiveDepth;
 						$("#dxValueSub").prop("disabled",false);
 						$("#muyValue").prop("disabled",true);
 						$("#subMuy").prop("disabled",true);	
-						id=0;
+						
 						toastr.success("Correct Answer");
 					} else {
-						$("#modelMsg").html("<b class='boldTextBlue'>Correct Answer is  " +MuyVal+'</b>');
+//						$("#modelMsg").html("<b class='boldTextBlue'>Correct Answer is  " +MuyVal+'</b>');
+                        $("#btnModal").removeClass("btn-danger").addClass("btn-success");
+	        $(".modal-header").html("Success Message");
+            $(".modal-header").css("background","#5cb85c");
+			$("#MsgModal").html("Correct Answer is " + MuyVal);
 					}
 				}
-				id++;
+				id8++;
 			}	 
 		});  
 		
@@ -518,13 +576,19 @@ var EffectiveDepth;
 		 	
 	   
 		var dxIO;
+		var id9 =1;
+		
 		$("#dxValueSub").click(function(){	
 		 	$("body").css("padding","0px 0px 0px 0px");
 			dxIO =$("#dxValue").val();	
 			if(dxIO==""){
-				$("#modelMsg").html("<b class='boldTextRed'>Enter numeric value ");
+				$(".modal-header").html("Error Message");
+			$(".modal-header").css("background","#9c1203b0");
+			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
+			$("#MsgModal").html("Provide the necessary values");
 			}else{
-				if (id <= 2) {
+				dxIO =parseFloat($("#dxValue").val());
+				if (id9 <= 3) {
 					if (dxIO == dxCorr) {
 						//addToMasterJSON();
 						$("#rw4").prop("hidden",false);
@@ -532,20 +596,28 @@ var EffectiveDepth;
 						$("#dyValueSub").prop("disabled",false);	  
 						$("#dxValue").prop("disabled",true);
 						$("#dxValueSub").prop("disabled",true);			
-						id=0;
+						
 						toastr.success("Correct Answer");
 					} else if (dxIO != dxCorr) {
-						$("#modelMsg").html("<b class='boldTextRed'>Entered value is incorrect.Try again.</b> ");					
+						$(".modal-header").html("Error Message");
+			$(".modal-header").css("background","#9c1203b0");
+			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
+			$("#MsgModal").html("Entered value is incorrect.Try again.");
 					}
-				} else if (id == 3){
-					$("#ModelTitle1").html("Formula");
-					var  dxFormulaImg= '<img src="images/dxFormula.png" class="img-responsive" alt="Cinque Terre" width="45%" height="40%" ><br><p>Here, R<sub>u</sub> = '+fyValForDxDyCal+'</p>'
-					//modelImg = '<img src="images/typesOfSupports.png" class="img-responsive" alt="Cinque Terre"  alt=" " width="150" height="50">'
-					$("#modelMsg").html(dxFormulaImg);
+				} else if (id9 == 4){
+//					$("#ModelTitle1").html("Formula");
+//					var  dxFormulaImg= '<img src="images/dxFormula.png" class="img-responsive" alt="Cinque Terre" width="45%" height="40%" ><br><p>Here, R<sub>u</sub> = '+fyValForDxDyCal+'</p>'
+					modelImg = '<img src="images/dxFormula.png" class="img-responsive" alt="Cinque Terre"  alt=" " >'
+//					$("#modelMsg").html(dxFormulaImg);
+					
+					$(".modal-header").html("Formula");
+			$(".modal-header").css("background","#23435c");
+			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
+		    $("#MsgModal").html(modelImg);
 					
 				} else {
 					$("#ModelTitle1").html("Message box");
-					dxIO =parseFloat($("#dxValue").val());
+					
 	//				flow = flowAns.toFixed(2);
 					if (dxIO == dxCorr) {			
 						//addToMasterJSON();		
@@ -554,160 +626,194 @@ var EffectiveDepth;
 						$("#dyValueSub").prop("disabled",false);	  
 						$("#dxValue").prop("disabled",true);
 						$("#dxValueSub").prop("disabled",true);			
-						id=0;
+						
 						toastr.success("Correct Answer");
 					} else {
-						$("#modelMsg").html("<b class='boldTextBlue'>Correct Answer is  " +dxCorr+'</b>');
+//						$("#modelMsg").html("<b class='boldTextBlue'>Correct Answer is  " +dxCorr+'</b>');
+                         $("#btnModal").removeClass("btn-danger").addClass("btn-success");
+	        $(".modal-header").html("Success Message");
+            $(".modal-header").css("background","#5cb85c");
+			$("#MsgModal").html("Correct Answer is " + dxCorr);
 					}
 				}
-				id++;
+				id9++;
 			}	 
 		}); 
  
-
+      var id10 =1;
+      
  		$("#dyValueSub").click(function(){	
-		 	$("body").css("padding","0px 0px 0px 0px");
-			dyIO =$("#dyValue").val();	
+//		 	$("body").css("padding","0px 0px 0px 0px");
+			dyIO =$("#dyValue").val();
+			
+			compareValue();
+				effValRound = roundToNearest5(effVal);
+				
 			if(dyIO==""){
-				$("#modelMsg").html("<b class='boldTextRed'>Enter numeric value ");
+				 $(".modal-header").html("Error Message");
+			$(".modal-header").css("background","#9c1203b0");
+			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
+			$("#MsgModal").html("Provide the necessary values");
 			}else{
-				if (id <= 2) {
+				dyIO =parseFloat($("#dyValue").val());
+				if (id10 <= 3) {
 					if (dyIO == dyCorr) {
 						//addToMasterJSON();
-						$("#rw5").prop("hidden",false);
+						$("#rw6").prop("hidden",false);
+						$("#rw7").prop("hidden",false);
 						$("#effectiveD").prop("disabled",false);
 						$("#SubeffectiveD").prop("disabled",false);
 						  
 						$("#dyValue").prop("disabled",true);
 						$("#dyValueSub").prop("disabled",true);			
-						id=0;
-						toastr.success("Correct Answer");
+						$("#effLabel").text("Effective depth d : "+effValRound+" mm");
+//						toastr.success("Correct Answer");
 					} else if (dyIO != dyCorr) {
-						$("#modelMsg").html("<b class='boldTextRed'>Entered value is incorrect.Try again.</b> ");					
+						
+			$(".modal-header").html("Error Message");
+			$(".modal-header").css("background","#9c1203b0");
+			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
+			$("#MsgModal").html("Entered value is incorrect.Try again.");
+						
+//						$("#modelMsg").html("<b class='boldTextRed'>Entered value is incorrect.Try again.</b> ");					
 					}
-				} else if (id == 3){
-					$("#ModelTitle1").html("Formula");
-						var  dyFormulaImg= '<img src="images/dyFormula.png" class="img-responsive" alt="Cinque Terre" width="45%" height="40%" ><br><p>Here, R<sub>u</sub> = '+fyValForDxDyCal+'</p>'
-					//modelImg = '<img src="images/typesOfSupports.png" class="img-responsive" alt="Cinque Terre"  alt=" " width="150" height="50">'
-					$("#modelMsg").html(dyFormulaImg);
+				} else if (id10 == 4){
+//					$("#ModelTitle1").html("Formula");
+//						var  dyFormulaImg= '<img src="images/dyFormula.png" class="img-responsive" alt="Cinque Terre" width="45%" height="40%" ><br><p>Here, R<sub>u</sub> = '+fyValForDxDyCal+'</p>'
+					modelImg = '<img src="images/dyFormula.png" class="img-responsive" alt="Cinque Terre"  alt=" " >'
+//					$("#modelMsg").html(dyFormulaImg);
+               $(".modal-header").html("Formula");
+			$(".modal-header").css("background","#23435c");
+			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
+		    $("#MsgModal").html(modelImg);
 					
 				} else {
 					$("#ModelTitle1").html("Message box");
-					dyIO =parseFloat($("#dyValue").val());
+					
 	//				flow = flowAns.toFixed(2);
 					if (dyIO == dyCorr) {			
 						//addToMasterJSON();		
-						$("#rw5").prop("hidden",false);
+						$("#rw6").prop("hidden",false);
+						$("#rw7").prop("hidden",false);
 						$("#effectiveD").prop("disabled",false);
 						$("#SubeffectiveD").prop("disabled",false);
 						  
 						$("#dyValue").prop("disabled",true);
 						$("#dyValueSub").prop("disabled",true);			
-						id=0;
-						toastr.success("Correct Answer");
+						$("#effLabel").text("Effective depth d : "+effValRound+" mm");
+//						toastr.success("Correct Answer");
 					} else {
-						$("#modelMsg").html("<b class='boldTextBlue'>Correct Answer is  " +dyCorr+'</b>');
+//						$("#modelMsg").html("<b class='boldTextBlue'>Correct Answer is  " +dyCorr+'</b>');
+                       
+                       $("#btnModal").removeClass("btn-danger").addClass("btn-success");
+	        $(".modal-header").html("Success Message");
+            $(".modal-header").css("background","#5cb85c");
+			$("#MsgModal").html("Correct Answer is " + dyCorr);
+                       
 					}
 				}
-				id++;
+				id10++;
 			}	 
 		}); 
 		
 		
 		
 	
-	
+	    var id11 = 1;
 		var eDepthIO;
-			$("#SubeffectiveD").click(function(){	
-		 	$("body").css("padding","0px 0px 0px 0px");
-			 eDepthIO =$("#effectiveD").val();	
-			if(eDepthIO==""){
-				$("#modelMsg").html("<b class='boldTextRed'>Enter numeric value ");
-			}else{
-				if (id <= 2) {
-					if (eDepthIO == EffectiveDepth) {
-						//addToMasterJSON();
-						$("#rw6").prop("hidden",false);
-						$("#totalDepth").prop("disabled",false);
-						$("#totalDepthSub").prop("disabled",false);  
-						$("#effectiveD").prop("disabled",true);
-						$("#SubeffectiveD").prop("disabled",true);			
-						id=0;
-						effectiveDepth(EffectiveDepth);
-						toastr.success("Correct Answer");
-					} else if (eDepthIO != EffectiveDepth) {
-						$("#modelMsg").html("<b class='boldTextRed'>Entered value is incorrect.Try again.</b> ");					
-					}
-				} else if (id == 3){
-					
-						$("#modelMsg").html("<b class='boldTextBlue'>Note : The Effective Depth is The Maximum Value of dx or dy </b> ");
-					
-				} else {
-			
-					eDepthIO =parseFloat($("#effectiveD").val());
-	
-					if (eDepthIO == EffectiveDepth) {			
-						//addToMasterJSON();		
-						$("#rw6").prop("hidden",false);
-						$("#totalDepth").prop("disabled",false);
-						$("#totalDepthSub").prop("disabled",false);  
-						$("#effectiveD").prop("disabled",true);
-						$("#SubeffectiveD").prop("disabled",true);			
-						id=0;
-						effectiveDepth(EffectiveDepth);
-						toastr.success("Correct Answer");
-					} else {
-						$("#modelMsg").html("<b class='boldTextBlue'>Correct Answer is  " +EffectiveDepth+'</b>');
-					}
-				}
-				id++;
-			}	 
-		});
 		
-	 	   var totDepthIO;    	
+
+		function compareValue(){
+			if(dxCorr < 100 && dyCorr < 100){
+				effVal = 100;
+			}else
+			if(dxCorr<dyCorr){
+				effVal = dxCorr;
+			}else{
+				effVal = dyCorr;
+			}
+		}
+
+	 	   var totDepthIO; 
+	 	   var id12 =1;
+	 	      	
+	 	      	function roundToNearest5(value) {
+    return Math.ceil(value / 5) * 5;
+}
+	 	      	
 			$("#totalDepthSub").click(function(){	
+				
+			totDepth = parseFloat(effectiveCover)+parseFloat(effValRound);	
+			totDepth = totDepth.toFixed(2);
+			totDepth = parseFloat(totDepth);	
+			
+			totalDepthvalue = totDepth;
+				
 		 	$("body").css("padding","0px 0px 0px 0px");
 			 totDepthIO =$("#totalDepth").val();	
 			if(totDepthIO==""){
-				$("#modelMsg").html("<b class='boldTextRed'>Enter numeric value ");
+				$(".modal-header").html("Error Message");
+			$(".modal-header").css("background","#9c1203b0");
+			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
+			$("#MsgModal").html("Provide the necessary values");
 			}else{
-				if (id <= 2) {
+				totDepthIO =parseFloat($("#totalDepth").val());
+				if (id12 <= 3) {
 					if (totDepthIO == totalDepthvalue) {
 						//addToMasterJSON();
-						$("#rw7").prop("hidden",false);
-						$("#nextLevelPg3").prop("disabled",false);	  
+						
+						$("#rw8").prop("hidden",false);
+						$("#nextLevelPg3").prop("hidden",false);	  
 						$("#totalDepth").prop("disabled",true);
 						$("#totalDepthSub").prop("disabled",true);			
-						id=0;
+						autoScroll();
 						totaldepth(totalDepthvalue);
 						toastr.success("Correct Answer");
 						
+						
 					} else if (totDepthIO != totalDepthvalue) {
-						$("#modelMsg").html("<b class='boldTextRed'>Entered value is incorrect.Try again.</b> ");					
-					}
-				} else if (id == 3){
+//						$("#modelMsg").html("<b class='boldTextRed'>Entered value is incorrect.Try again.</b> ");
+                      $(".modal-header").html("Error Message");
+			$(".modal-header").css("background","#9c1203b0");
+			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
+			$("#MsgModal").html("Entered value is incorrect.Try again.");
 					
-						$("#modelMsg").html("<b class='boldTextBlue'> Formula : Total Depth = Effective Depth + Effective Cover</b> ");
+					}
+				} else if (id12 == 4){
+					
+//						$("#modelMsg").html("<b class='boldTextBlue'> Formula : Total Depth = Effective Depth + Effective Cover</b> ");
+					
+					$(".modal-header").html("Formula");
+			$(".modal-header").css("background","#23435c");
+			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
+		    $("#MsgModal").html("<b>Total Depth = Effective Depth + Effective Cover</b>");
 					
 				} else {
 			
-					totDepthIO =parseFloat($("#totalDepth").val());
+					
 	
 					if (totDepthIO == totalDepthvalue) {			
 						//addToMasterJSON();		
-						$("#rw7").prop("hidden",false);
-						$("#nextLevelPg3").prop("disabled",false);	  
+//						$("#rw7").prop("hidden",false);
+						$("#rw8").prop("hidden",false);
+						$("#nextLevelPg3").prop("hidden",false);  
 						$("#totalDepth").prop("disabled",true);
 						$("#totalDepthSub").prop("disabled",true);			
-						id=0;
+						
 						totaldepth(totalDepthvalue);
 						toastr.success("Correct Answer");
-						
+						autoScroll();
+						$("#rw7").prop("hidden",false);
+//						$("#effLabel").text("Effective depth d : "+effValRound+" mm");
 					} else {
-						$("#modelMsg").html("<b class='boldTextBlue'>Correct Answer is  " +totalDepthvalue+'</b>');
+//						$("#modelMsg").html("<b class='boldTextBlue'>Correct Answer is  " +totalDepthvalue+'</b>');
+              $("#btnModal").removeClass("btn-danger").addClass("btn-success");
+	        $(".modal-header").html("Success Message");
+            $(".modal-header").css("background","#5cb85c");
+			$("#MsgModal").html("Correct Answer is " + totalDepthvalue);
 					}
 				}
-				id++;
+				id12++;
 			}	 
 		});
 		
@@ -715,14 +821,16 @@ var EffectiveDepth;
 		
 		
 		$("#nextLevelPg3").click(function(){
-			$("body").css("padding","0px 0px 0px 0px");	
-			$("#modelMsg").html("<b class='boldTextGreen'>Configured Successfully</b>")
-			//$("#main-div-conf").html('');
-			//$("#centerText2").html('');
+			Page3();
 			
-				//$("#checkConfigPg2").prop("disabled",true);
-			//Page3Configurations(pre,conVal,steelVal,colSize,d_val,sbc_val,eCover_value2,LfValue,BfValue,wuCorr);
-			;	
+//			$("body").css("padding","0px 0px 0px 0px");	
+//			$("#modelMsg").html("<b class='boldTextGreen'>Configured Successfully</b>")
+//			//$("#main-div-conf").html('');
+//			//$("#centerText2").html('');
+//			
+//				//$("#checkConfigPg2").prop("disabled",true);
+//			//Page3Configurations(pre,conVal,steelVal,colSize,d_val,sbc_val,eCover_value2,LfValue,BfValue,wuCorr);
+//			;	
 	});
 		
 	    

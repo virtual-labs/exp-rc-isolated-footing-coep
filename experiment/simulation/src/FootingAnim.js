@@ -1,5 +1,5 @@
 
-function FootingAnim(pre,conVal,steelVal,colSize,d_val,sbc_val,eCover_val){
+function FootingAnim(){
 	$('#page1Div1').html("");
 	$('#page1Div1').removeAttr('width');
 	$('#page1Div1').removeAttr('height');
@@ -7,31 +7,31 @@ function FootingAnim(pre,conVal,steelVal,colSize,d_val,sbc_val,eCover_val){
 	var h = 620;
 
 	if ($(window).width() < 500) {
-		paper = new Raphael(document.getElementById('page2Div1'), '100%', '100%');
+		paper = new Raphael(document.getElementById('page1Div1'), '100%', '100%');
 		paper.setSize('100%', '100%');
 	} else {
-		paper = new Raphael(document.getElementById('page2Div1'), '100%', '100%');
+		paper = new Raphael(document.getElementById('page1Div1'), '100%', '100%');
 		paper.setViewBox(0, 0, w, h, true);
 		paper.setSize('100%', '100%');
 	}
 
    var workingLoadValue = parseInt(pre);
-	console.log("workingLoadValue =  "+pre);
+//	console.log("workingLoadValue =  "+pre);
    
    var concreteValue =parseInt(conVal);
-   	console.log("concreteValue =  "+conVal);
+//   	console.log("concreteValue =  "+conVal);
    
    var steelValue =parseInt(steelVal);
-   	console.log("steelValue =  "+steelVal);
+//   	console.log("steelValue =  "+steelVal);
   
    var colSizeValue = parseInt(colSize);
-   	console.log("colSizeValue =  "+colSize);
+//   	console.log("colSizeValue =  "+colSize);
    
    var dValue = parseInt(d_val);
-   	console.log("dValue =  "+d_val);
+//   	console.log("dValue =  "+d_val);
   
    var SBCValue =parseInt(sbc_val);
-   		console.log("SBCValue =  "+sbc_val);
+//   		console.log("SBCValue =  "+sbc_val);
    		
    var eCover_val=parseInt(eCover_val);
    	console.log("eCover_val =  "+eCover_val);

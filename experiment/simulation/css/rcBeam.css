@@ -21,10 +21,10 @@
 }
 
 .spanMsg {
-	background-color: #5c6872;
-    color: #fff;
-    margin: 2px;
-    padding: 1px ;
+	background-color:#ced5db;
+    color: #000;
+    margin: 5px;
+    padding: 2px ;
     text-align: center;
     border-radius: 7px;
     font-weight: 600;
@@ -155,10 +155,10 @@ background-color:#072647;
 
 .calRowBorder
 {
-			background-color:#072647; 
+			background-color:#c9dcf0; 
 /* 			#45929d; */
 /* 			#31717b; */
-			color:#fff;
+			color:#303030;
 			padding:10px;
 			margin: 2px 2px 15px 2px;
 			margin-bottom:10px;
