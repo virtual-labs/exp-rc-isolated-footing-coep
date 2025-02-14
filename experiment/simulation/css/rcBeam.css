@@ -3,14 +3,14 @@
      height: auto;
 /*     background-color: #3e5064; */
 /*     color: #fff; */
-    font-size: 14px;
+    font-size: 18px;
 }
 .panelHeadingBold{
 	font-size:21px;
 }
 .labelstyle
 {
-	margin: 2px;
+	margin: 5px;
 	font-size:17px;
 }
 
@@ -21,10 +21,10 @@
 }
 
 .spanMsg {
-	background-color: #5c6872;
-    color: #fff;
-    margin: 2px;
-    padding: 1px ;
+	background-color:#ced5db;
+    color: #000;
+    margin: 5px;
+    padding: 2px ;
     text-align: center;
     border-radius: 7px;
     font-weight: 600;
@@ -82,7 +82,7 @@ hr.new3 {
 	color: #fff;
 	font-size: 18px;
 	border-radius: 10px;
-	background-color: #3e9ae7;
+	background-color: #212529;
 	margin: 20px 10px;;
 	letter-spacing: 1px;
 	font-weight: bold;
@@ -90,21 +90,21 @@ hr.new3 {
 }
 #questionDiv .queno
 { 
-	background-color: #072647;
-    padding: 6px 6px;
+	background-color: #1d2b37;
+    padding: 8px;
     color: #fff;
-    font-size: 18px;
-    border-radius: 6px;
+    font-size: 20px;
+    border-radius: 10px;
     font-family: Cambria, Georgia, serif;
  }
  
-#nextLevelConfig
+ #testSubmit,#nextLevelConfig
 {
 	padding: 10px;
 	color: #fff;
 	font-size: 18px;
 	border-radius: 10px;
-	background-color: #3e9ae7;
+	background-color: #212529;
 	margin: 20px 10px;;
 	letter-spacing: 1px;
 	font-weight: bold;
@@ -113,15 +113,14 @@ hr.new3 {
 .nextLevelBtn {
 	padding: 10px;
     border-radius: 10px;
-    background-color: #3e9ae7;
+    background-color: #212529;
     color: #fff;
     margin: 20px 10px;
     letter-spacing: 1px;
     font-size: 18px;
 }
 .panel-primary>.panel-heading,.card-header,.modal-header {
-background-color:#343a40;
-/* #072647; */
+background-color:#072647;
 /* #16555f; */
 /* #31717b; */
 
@@ -156,12 +155,10 @@ background-color:#343a40;
 
 .calRowBorder
 {
-			background-color:#343a40;
-/* 			#072647;  */
-/* 			#6685a5 */
+			background-color:#c9dcf0; 
 /* 			#45929d; */
 /* 			#31717b; */
-			color:#fff;
+			color:#303030;
 			padding:10px;
 			margin: 2px 2px 15px 2px;
 			margin-bottom:10px;
@@ -205,14 +202,10 @@ background-color:#343a40;
 .labelstyleInfo
 {
 	    border-color: #035161;
-	    font-size:16px;
+	    
 /* 	background-color: #bad8da; */
 /*     color: #000; */
 /*     width:100%; */
 /*     text-align:center; */
 /*     padding: 5px; */
 }
-/* @media only screen and (min-width: 690px) { */
-/* 	#subHval_1Flight{ */
-/* 	font-size:10px; */
-/* 	} */
