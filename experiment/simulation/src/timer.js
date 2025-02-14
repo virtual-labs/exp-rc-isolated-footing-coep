@@ -1,54 +1,57 @@
-var hours ;
-var minutes ;
-var secs;
-let timerInterval1;
-let seconds = 0;
-$(document).ready(function () {
-     
 
-    
-    });
- // Function to format time as HH:MM:SS
- function formatTime(seconds) {
-    hours = Math.floor(seconds / 3600).toString().padStart(2, '0');
-    minutes = Math.floor((seconds % 3600) / 60).toString().padStart(2, '0');
-    secs = (seconds % 60).toString().padStart(2, '0');
-   return `${hours}:${minutes}:${secs}`;
- }
+"use strict";
 
- // Update the counter display
- function updateCounter() {
-   $('#counter').text(formatTime(seconds));
-   console.log();
- }
+let hour = 0;
+let minute = 0;
+let second = 0;
+let millisecond = 0;
 
- // Start the timer
- function startTimer() {
-   if (!timerInterval1) {
-     timerInterval1 = setInterval(() => {
-       seconds++;
-       updateCounter();
-     }, 1000);
-   }
- }
+let cron;
 
- // Stop the timer
-// $('#stop-counter').click(function () {
-//   clearInterval(timerInterval1);
-//   timerInterval1 = null;
-// });
+//document.form_main.start.onclick = () => start();
+//document.form_main.pause.onclick = () => pause();
+//document.form_main.reset.onclick = () => reset();
 
- // Reset the timer
-// $('#reset-counter').click(function () {
-//   clearInterval(timerInterval1);
-//   timerInterval = null;
-//   seconds = 0;
-//   updateCounter();
-//   startTimer(); // Automatically restart the timer after reset
-// });
+$( document ).ready(function() {
+	
+//  pause();
+  cron = setInterval(() => { timer(); }, 10);
+});
 
- // Automatically start the timer on page load
- startTimer();
+//function pause() {
+//  clearInterval(cron);
+//}
+//
+//function reset() {
+//  hour = 0;
+//  minute = 0;
+//  second = 0;
+//  millisecond = 0;
+//  document.getElementById('hour').innerText = '00';
+//  document.getElementById('minute').innerText = '00';
+//  document.getElementById('second').innerText = '00';
+//  document.getElementById('millisecond').innerText = '000';
+//}
 
- // Initialize the counter display
- updateCounter();
+function timer() {
+  if ((millisecond += 10) == 1000) {
+    millisecond = 0;
+    second++;
+  }
+  if (second == 60) {
+    second = 0;
+    minute++;
+  }
+  if (minute == 60) {
+    minute = 0;
+    hour++;
+  }
+  document.getElementById('hour').innerText = returnData(hour);
+  document.getElementById('minute').innerText = returnData(minute);
+  document.getElementById('second').innerText = returnData(second);
+//  document.getElementById('millisecond').innerText = returnData(millisecond);
+}
+
+function returnData(input) {
+  return input >= 10 ? input : `0${input}`
+}
