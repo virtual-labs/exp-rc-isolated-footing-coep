@@ -1,5 +1,5 @@
 var reinValSel = 0;
-var astX = 0;
+var astY = 0;
 var astFyVal = 0;
 var spacing = 0;
 var ptPercentValy = 0;
@@ -33,7 +33,7 @@ function bfCalculations(){
     + '<div class="row">'
     + '<div class="col-sm-1 "></div>'
     + '<div class="col-sm-5 spanMsg">'
-    + '<strong class="labelstyleInfo "><center>M<sub>ux</sub> = ' + MuxVal + ' kNm </center></strong>'
+    + '<strong class="labelstyleInfo "><center>M<sub>uy</sub> = ' + MuyVal + ' kNm </center></strong>'
     + '</div>'
     + '<div class="col-sm-1 "></div>'
     + '<div class="col-sm-4 spanMsg">'
@@ -76,6 +76,8 @@ function bfCalculations(){
     + '<option value="12">12</option>'
     + '<option value="16">16</option>'
     + '<option value="20">20</option>'
+    + '<option value="25">25</option>'
+    + '<option value="32">32</option>'
     + '</select>'
     + '</div>'
     + '<div class="col-sm-3" id="buttonDiv">'
@@ -139,7 +141,7 @@ function bfCalculations(){
 	   +'<div class="col-sm-2">'
 	   +'</div>'
 	   +'<div class="col-sm-8">'
-	   +'<button type="button" style="padding: 10px;width:100%;"  class="btn btn-danger btnStyle" id="nextLevelPg41"     ><b>SUBMIT</b></button>'
+	   +'<button type="button" style="padding: 10px;width:100%;"  class="btn btn-danger btnStyle" id="nextLevelPg41"     ><b>Submit</b></button>'
 	   +'</div>'	   
 	   +'<div class="col-sm-2">'
 	   +'</div>'	   
@@ -183,7 +185,7 @@ $(document).on("click", "#reinAreaSubmit1", function () {
     }
 });
 
-var astXEnter;
+var astYEnter;
 var id18 = 1;
 
 //$(document).on("click", "#astXSubmit", function () {
@@ -205,28 +207,28 @@ var id18 = 1;
     
     astMin = parseFloat(astMin);
     
-    if(astX<astMin){
+    if(astY<astMin){
     astComp = astMin;
     }else{
-	astComp = astX;
+	astComp = astY;
    }
    
    console.log("ast min"+astMin);
-   console.log("ast cal"+astX);
+   console.log("ast cal"+astY);
    console.log(" astComp "+astComp);
    
-    astXEnter = $("#astx1").val();
+    astYEnter = $("#astx1").val();
     
     
-    if (astXEnter == "") {
+    if (astYEnter == "") {
         $(".modal-header").html("Error Message");
         $(".modal-header").css("background", "#9c1203b0");
         $("#btnModal").removeClass("btn-success").addClass("btn-danger");
         $("#MsgModal").html("Provide the necessary value");
     } else {
-        astXEnter = parseFloat($("#astx1").val());
+        astYEnter = parseFloat($("#astx1").val());
         if (id18 <= 3) {
-            if (astXEnter == astX) {
+            if (astYEnter == astY) {
                 $("#astx1").prop("disabled", true);
                 $("#astXSubmit1").prop("disabled", true);
 //                 $("#astFy").prop("hidden",false);
@@ -247,7 +249,7 @@ var id18 = 1;
             modelImg2 = '<img src="images/asty.png" class="img-responsive" alt="Formula">';
             $("#MsgModal").html(modelImg2);
         } else {
-            if (astXEnter == astX) {
+            if (astYEnter == astY) {
                 $("#astx1").prop("disabled", true);
                 $("#astXSubmit1").prop("disabled", true);
 //                $("#astFy").prop("hidden",false);
@@ -258,7 +260,7 @@ var id18 = 1;
                 $("#btnModal").removeClass("btn-danger").addClass("btn-success");
                 $(".modal-header").html("Success Message");
                 $(".modal-header").css("background", "#5cb85c");
-                $("#MsgModal").html("Correct Answer is " + astX);
+                $("#MsgModal").html("Correct Answer is " + astY);
             }
         }
         id18++;
@@ -267,7 +269,7 @@ var id18 = 1;
 
  
 function calculateAstY() {
-    var numMul = 4.6 * MuxVal * Math.pow(10, 6);
+    var numMul = 4.6 * MuyVal * Math.pow(10, 6);
      bfConvert = BfValue*1000;
     var denoMul = conVal * bfConvert * effValRound * effValRound;
 
@@ -277,8 +279,8 @@ function calculateAstY() {
 
     var secTerm = (1 - sqrt).toFixed(2);
     var firstTerm = ((0.5 * conVal) / steelVal).toFixed(2);
-    astX = (firstTerm * secTerm * bfConvert * effValRound).toFixed(2);
-    astX = parseFloat(astX);
+    astY = (firstTerm * secTerm * bfConvert * effValRound).toFixed(2);
+    astY = parseFloat(astY);
 }
 
 var astFyEnter;
@@ -326,8 +328,8 @@ var id19 = 1;
                
                 $("#calSpacing1").prop("hidden",false);
                  $("#spacingLabel1").text("Provide "+reinValSel+" mm bar at "+spacing+" mm spacing");
-                  if(spacing<130){
-	                      alert("Minimum spacing required is 130 mm diameter of reinforcement and calculate again");
+                  if(spacing<75){
+	                      alert("Minimum spacing required is 75 mm diameter of reinforcement and calculate again");
 	                    $("#astFy1").prop("hidden",true);
 	                    $("#astF1").prop("disabled",false);
 	                    $("#reinAreaSubmit1").prop("disabled",false);
@@ -366,10 +368,10 @@ var id19 = 1;
                 
                 $("#calSpacing1").prop("hidden",false);
                 $("#spacingLabel1").text("Provide "+reinValSel+" mm bar at "+spacing+" mm spacing");
-                  if(spacing<130){
+                  if(spacing<75){
 	                  $("#astFSubmit1").prop("disabled", true);
 //	                      $("#spacingModal").modal("show");
-                       alert("Minimum spacing required is 130 mm diameter of reinforcement and calculate again");
+                       alert("Minimum spacing required is 75 mm diameter of reinforcement and calculate again");
 	                    $("#astFy1").prop("hidden",true);
 	                    $("#astF1").prop("disabled",false);
 	                    $("#astF1").val("");
@@ -516,12 +518,12 @@ $("#astProvideSubmit1").click(function(){
 });
  
  
-  $("#nextRow1").click(function(){
+  $("#nextLevelPg41").click(function(){
 //	console.log("clicked");
    
-  
+   $("#nextLevelPg41").prop("disabled",true);
 //        finalPage();
-  $("#nextLevelPg41").prop("disabled",true);
+
 })
  
 

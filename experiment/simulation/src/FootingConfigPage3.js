@@ -74,6 +74,8 @@ function Page3(){
     + '<option value="12">12</option>'
     + '<option value="16">16</option>'
     + '<option value="20">20</option>'
+    + '<option value="25">25</option>'
+    + '<option value="32">32</option>'
     + '</select>'
     + '</div>'
     + '<div class="col-sm-3" id="buttonDiv">'
@@ -321,8 +323,8 @@ var id14 = 1;
                 $("#astFSubmit").prop("disabled", true);
                 $("#calSpacing").prop("hidden",false);
                  $("#spacingLabel").text("Provide "+reinValSel+" mm bar at "+spacing+" mm spacing");
-                  if(spacing<130){
-	                      alert("Minimum spacing required is 130 mm diameter of reinforcement and calculate again");
+                  if(spacing<75){
+	                      alert("Minimum spacing required is 75 mm diameter of reinforcement and calculate again");
 	                    $("#astFy").prop("hidden",true);
 	                    $("#astF").prop("disabled",false);
 	                    $("#reinAreaSubmit").prop("disabled",false);
@@ -358,9 +360,9 @@ var id14 = 1;
                 $("#astFSubmit").prop("disabled", true);
                 $("#calSpacing").prop("hidden",false);
                 $("#spacingLabel").text("Provide "+reinValSel+" mm bar at "+spacing+" mm spacing");
-                  if(spacing<130){
+                  if(spacing<75){
 //	                      $("#spacingModal").modal("show");
-                       alert("Minimum spacing required is 130 mm diameter of reinforcement and calculate again");
+                       alert("Minimum spacing required is 75 mm diameter of reinforcement and calculate again");
 	                    $("#astFy").prop("hidden",true);
 	                    $("#astF").prop("disabled",false);
 	                    $("#astF").val("");
