@@ -728,9 +728,9 @@ var totDepth;
 				effVal = 100;
 			}else
 			if(dxCorr<dyCorr){
-				effVal = dxCorr;
-			}else{
 				effVal = dyCorr;
+			}else{
+				effVal = dxCorr;
 			}
 		}
 
