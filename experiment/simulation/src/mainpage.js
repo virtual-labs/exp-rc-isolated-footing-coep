@@ -199,14 +199,24 @@ var htm ='<div class="row">'
 			$(".modal-header").css("background","#9c1203b0");
 			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
 			$("#MsgModal").html("Enter values of effective cover d"+"'"+" between 50 mm to 75 mm");
-	}else{
+	}else if(colSize<200){
+		  $(".modal-header").html("Error Message");
+			$(".modal-header").css("background","#9c1203b0");
+			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
+			$("#MsgModal").html("Column size b should be minimum 200mm");
+	 }else if(d_val<200){
+		  $(".modal-header").html("Error Message");
+			$(".modal-header").css("background","#9c1203b0");
+			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
+			$("#MsgModal").html("Height h should be minimum 200mm");
+	}
+	else{
 		Page1();
 		$("#btnModal").removeClass("btn-danger").addClass("btn-success");
 	        $(".modal-header").html("Success Message");
             $(".modal-header").css("background","#5cb85c");
 			$("#MsgModal").html("Configured successfully!");
-			
-//		$("#checkConfg").prop("disabled",true);
+	
 	}
   }	
 });
