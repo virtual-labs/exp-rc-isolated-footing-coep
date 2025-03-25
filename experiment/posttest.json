@@ -45,7 +45,7 @@
         "a": "grade of concrete in the column",
         "b": "load transmitted to the footing by the column",
         "c": "safe bearing pressure of the soil",
-        "d": "Both b and c"
+        "d": "Both b and c "
       },
       "correctAnswer": "b",
       "difficulty": "beginner"
