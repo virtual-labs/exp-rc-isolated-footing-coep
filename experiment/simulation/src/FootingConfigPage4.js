@@ -520,6 +520,20 @@ $("#astProvideSubmit1").click(function(){
  
   $("#nextLevelPg41").click(function(){
 //	console.log("clicked");
+
+    Swal.fire({
+        icon: 'success',
+        title: 'Experiment Completed!',
+        confirmButtonText: 'Ok',
+        customClass: {
+          icon: 'custom-icon',
+          popup: 'custom-popup',
+          title: 'custom-title',
+          confirmButton: 'custom-confirm-button',
+          cancelButton: 'custom-cancel-button',
+        }
+      });
+
    
    $("#nextLevelPg41").prop("disabled",true);
 //        finalPage();
