@@ -61,6 +61,30 @@
       },
       "correctAnswer": "a",
       "difficulty": "beginner"
+    },
+	
+	{
+      "question": "If a square footing of size 2 m × 2 m carries a load of 600 kN, the actual bearing pressure on the soil is:",
+      "answers": {
+        "a": "100 kPa",
+        "b": "120 kPa",
+        "c": "150 kPa",
+        "d": "200 kPa"
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+	
+	{
+      "question": "When calculating reinforcement for an RC footing slab, the critical section for bending moment is generally taken at:",
+      "answers": {
+        "a": "Centre of the footing",
+        "b": "Face of the column",
+        "c": "Midway between column and edge",
+        "d": "At the footing corner"
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
     }
 	
  
