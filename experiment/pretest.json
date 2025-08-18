@@ -61,6 +61,30 @@
       },
       "correctAnswer": "a",
       "difficulty": "beginner"
+    },
+	
+	{
+      "question": "The safe bearing capacity (SBC) of soil is generally in the range of:",
+      "answers": {
+        "a": "1–5 MPa",
+        "b": "100–400 kPa",
+        "c": "10–50 MPa",
+        "d": "500–1000 kPa"
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+	
+	{
+      "question": "In footing design, the bending moments are resisted by:",
+      "answers": {
+        "a": "Soil only",
+        "b": "Concrete in tension",
+        "c": "Concrete in compression and steel in tension",
+        "d": "Steel in compression only"
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
     }
 	
  
