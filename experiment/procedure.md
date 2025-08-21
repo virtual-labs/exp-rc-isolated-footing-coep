@@ -1,4 +1,4 @@
-## Procedure
+## PROCEDURE
 
 ### Level 1:
 - Input the **Working Load (P)** in kN  
